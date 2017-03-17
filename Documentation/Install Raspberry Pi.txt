@@ -1,7 +1,10 @@
-TJBOT Installation
-==================
+Installation of the Raspbian
+============================
+This short installation guide will support you to set up an raspberry pi v2/v3 with raspbian (most current). 
+Also you will update the node-red environment (nodejs, node-red, nodes) to the most current supported version to suport this demo.
 
 1. Download current raspbian and install on SD Card (see tutorial from raspbian install on your OS)
+
 2. Configure Raspbian with
 	- camera on 
 	- right locale (de/vienna)
@@ -11,21 +14,26 @@ TJBOT Installation
 	- leave pi as your username
 	- set new default password
 	- reboot
+
 3. upgrade raspbian
 	- sudo apt-get update
 	- sudo apt-get install
 	- sudo apt-get upgrade
 	- sudo apt-get dist-upgrade
+
 4. install tools and addons (if needed)
 	- sudo apt install -y tightvncserver
 	- sudo apt install -y xrdp
 	- sudo apt install -y samba
 	- sudo reboot
+
 5. upgrade nodejs to v6 (with node-red update script)
 	- update-nodejs-and-nodered
+
 6. manual update -- if needed  (for newest informations look on nodejs webpage)
 	- curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
 	- sudo apt install nodejs
+
 7. check if tools are most current (for micro, sound, camera, ..)
 	- sudo apt-get install git
 	- sudo apt-get install python-picamera
@@ -33,6 +41,7 @@ TJBOT Installation
 	- sudo apt-get install alsa-base alsa-utils
 	- sudo apt-get install libasound2-dev
 	- sudo npm install -g node-red-admin
+
 8. install Node-Red base for TJBoT nodered
 	- node-red-start
 	- node-red-stop
@@ -44,7 +53,12 @@ TJBOT Installation
 	- npm install node-red-contrib-objectstore
 	- npm install node-red-contrib-ibm-watson-iot
 	- npm install node-red-node-watson
-9. install GrovePi+ Enhancements if used 
+	- npm install node-red-dashboard
+
+9. Install SenseHat 
+	# If you use SenseHat with the TJBot - it is easier - nothing to install
+
+10. install GrovePi+ Enhancements if used 
     # see: http://www.dexterindustries.com/GrovePi/get-started-with-the-grovepi/setting-software/
     - cd ~
     - mkdir Git
@@ -92,6 +106,17 @@ TJBOT Installation
 	- cd ~/node-red-data
 	- npm install node-red-contrib-grovepi
 
+11. Microphone and Sound settings
+	# Plug in the USB Sound Card or USB Microphone
+	# Config with alsamixer 
+	- alsamixer 
+	- sudo alsactl store
+	# Test with
+	- arecord -D plughw:1,0 -d 3.0 test.wav && aplay test.wav
+
+12. Test camerapi
+	- raspistill -o cam.jpg
+
 x. deeper informations 
 	- http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/
 	- https://www.sunfounder.com/wiki/index.php?title=To_use_USB_mini_microphone_on_Raspbian
@@ -103,5 +128,4 @@ z. additional
 	- http://tutorials-raspberrypi.com/library-installation-for-multiline-m-x-n-max7219-led-matrices/
 	- http://tutorials-raspberrypi.de/led-dot-matrix-zusammenbau-und-installation/
 	- http://tutorials-raspberrypi.de/raspberry-pi-luftfeuchtigkeit-temperatur-messen-dht11-dht22/
-	
-	
+
